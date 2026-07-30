@@ -1066,14 +1066,17 @@ body {
   padding: 20px;
   max-width: 380px;
   width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
+  max-height: calc(100dvh - 32px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .share-content h3 {
   font-size: 17px;
   margin-bottom: 16px;
   text-align: center;
+  flex-shrink: 0;
 }
 
 .share-canvas-wrap {
@@ -1081,11 +1084,22 @@ body {
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   margin-bottom: 16px;
+  min-height: 0;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .share-canvas-wrap canvas {
-  width: 100%;
+  /* 关键：按弹窗剩余高度等比缩小整张图，不再用 width:100% 把长图撑出屏幕。
+     !important 用来覆盖高清画布函数写入的逻辑尺寸 inline style。 */
   display: block;
+  width: auto !important;
+  height: auto !important;
+  max-width: 100%;
+  max-height: calc(100dvh - 250px);
+  object-fit: contain;
 }
 
 .share-actions {
