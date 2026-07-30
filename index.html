@@ -1808,9 +1808,22 @@ function swapCities() {
 }
 
 // === DATE PICKER (calendar) ===
+// 之前写死只渲染"当月+未来2个月"共3个月份，超出范围就没有月份可选了，
+// 导致用户滚到某个月份后就被卡住(比如卡在9月)。改为按需追加月份：
+// 初始渲染半年，滚动到接近底部时自动再渲染半年，理论上可以一直往后翻，
+// 但不能选过去的日期(isPast逻辑保留)。
+const MONTHS_PER_BATCH = 6;
 function openDatePicker() {
+  app.dateModalMonthsRendered = 0;
   renderDateModal();
   document.getElementById('dateModal').classList.add('active');
+
+  const body = document.getElementById('dateModalBody');
+  body.onscroll = () => {
+    if (body.scrollTop + body.clientHeight >= body.scrollHeight - 200) {
+      appendDateModalMonths();
+    }
+  };
 }
 
 function closeDatePicker() {
@@ -1821,54 +1834,64 @@ function isSameDay(a, b) {
   return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
 }
 
+function buildMonthBlockHTML(year, month, today, selected) {
+  const firstWeekday = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+  let html = `<div class="month-block"><div class="month-title">${year}年${month + 1}月</div><div class="day-grid">`;
+
+  for (let i = 0; i < firstWeekday; i++) {
+    html += `<div class="day-cell empty"></div>`;
+  }
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    const cellDate = new Date(year, month, d);
+    const isPast = cellDate < today;
+    const isToday = isSameDay(cellDate, today);
+    const isSelected = isSameDay(cellDate, selected);
+
+    let cls = 'day-cell';
+    if (isPast) cls += ' past';
+    if (isToday) cls += ' today';
+    if (isSelected && !isPast) cls += ' selected';
+
+    let tag = '';
+    if (isToday) tag = '今天';
+
+    const clickAttr = isPast ? '' : `onclick="pickDateCell(${year},${month},${d})"`;
+
+    html += `<div class="${cls}" ${clickAttr}>
+      <div class="dnum">${d}</div>
+      ${tag ? `<div class="dtag">${tag}</div>` : ''}
+    </div>`;
+  }
+
+  html += `</div></div>`;
+  return html;
+}
+
 function renderDateModal() {
+  const body = document.getElementById('dateModalBody');
+  body.innerHTML = '';
+  app.dateModalMonthsRendered = 0;
+  appendDateModalMonths();
+}
+
+function appendDateModalMonths() {
   const body = document.getElementById('dateModalBody');
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   const selected = new Date(app.date);
   selected.setHours(0, 0, 0, 0);
 
+  const startIndex = app.dateModalMonthsRendered || 0;
   let html = '';
-  // Render current month + next 2 months
-  for (let m = 0; m < 3; m++) {
+  for (let m = startIndex; m < startIndex + MONTHS_PER_BATCH; m++) {
     const monthDate = new Date(today.getFullYear(), today.getMonth() + m, 1);
-    const year = monthDate.getFullYear();
-    const month = monthDate.getMonth();
-    const firstWeekday = new Date(year, month, 1).getDay();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-    html += `<div class="month-block"><div class="month-title">${year}年${month + 1}月</div><div class="day-grid">`;
-
-    for (let i = 0; i < firstWeekday; i++) {
-      html += `<div class="day-cell empty"></div>`;
-    }
-
-    for (let d = 1; d <= daysInMonth; d++) {
-      const cellDate = new Date(year, month, d);
-      const isPast = cellDate < today;
-      const isToday = isSameDay(cellDate, today);
-      const isSelected = isSameDay(cellDate, selected);
-
-      let cls = 'day-cell';
-      if (isPast) cls += ' past';
-      if (isToday) cls += ' today';
-      if (isSelected && !isPast) cls += ' selected';
-
-      let tag = '';
-      if (isToday) tag = '今天';
-
-      const clickAttr = isPast ? '' : `onclick="pickDateCell(${year},${month},${d})"`;
-
-      html += `<div class="${cls}" ${clickAttr}>
-        <div class="dnum">${d}</div>
-        ${tag ? `<div class="dtag">${tag}</div>` : ''}
-      </div>`;
-    }
-
-    html += `</div></div>`;
+    html += buildMonthBlockHTML(monthDate.getFullYear(), monthDate.getMonth(), today, selected);
   }
-
-  body.innerHTML = html;
+  body.insertAdjacentHTML('beforeend', html);
+  app.dateModalMonthsRendered = startIndex + MONTHS_PER_BATCH;
 }
 
 function pickDateCell(year, month, day) {
@@ -2577,11 +2600,25 @@ function renderShareCanvas() {
   }
 }
 
+// 之前 canvas 按逻辑像素(640x1000)渲染，导出后在现代手机的高密度屏幕(2~3倍DPR)上
+// 放大显示会明显模糊。这里让画布按设备像素比渲染实际像素，但绘制代码仍使用逻辑坐标，
+// 保证清晰度提升的同时不用改动下面每个模板的绘制逻辑。CSS里 canvas 宽度仍是100%，
+// 显示大小不变，只是内部像素密度更高。
+function setupHiDPICanvas(canvas, logicalW, logicalH) {
+  const dpr = Math.max(2, Math.min(window.devicePixelRatio || 1, 3));
+  canvas.width = logicalW * dpr;
+  canvas.height = logicalH * dpr;
+  canvas.style.width = logicalW + 'px';
+  canvas.style.height = logicalH + 'px';
+  const ctx = canvas.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return ctx;
+}
+
 // ---------- 模板一：拟真机票（天空渐变背景 + 登机牌撕票造型 + 大字三字码 + 条形码） ----------
 function drawBoardingPassTemplate(ctx, canvas, order) {
   const W = 640, H = 1040;
-  canvas.width = W;
-  canvas.height = H;
+  ctx = setupHiDPICanvas(canvas, W, H);
   const isPlane = order.type === 'plane';
 
   // ---------- 天空背景 ----------
@@ -2794,8 +2831,7 @@ function drawBoardingPassTemplate(ctx, canvas, order) {
 // ---------- 模板二：到此为止（吐槽风·登机牌撕碎版，深色背景+荧光撕痕+盖章"退出中"） ----------
 function drawQuitTemplate(ctx, canvas, order) {
   const W = 640, H = 1000;
-  canvas.width = W;
-  canvas.height = H;
+  ctx = setupHiDPICanvas(canvas, W, H);
   const isPlane = order.type === 'plane';
   const line = shareLinePools.quit[app.shareLineIndex % shareLinePools.quit.length];
 
@@ -3102,14 +3138,52 @@ function roundRect(ctx, x, y, w, h, r) {
   ctx.closePath();
 }
 
-function saveShareImage() {
+// 之前用 <a download> 强制触发"文件下载"，手机浏览器(尤其iOS Safari/微信内)
+// 只会把图片存进"文件"App，不会存进系统相册。改用 Web Share API 分享文件，
+// 用户在系统分享面板里可以直接选"存储图像"存进相册。不支持分享API的机型
+// (旧版浏览器/桌面端)自动降级：新标签页打开图片供长按保存，或走原下载方式。
+async function saveShareImage() {
   const canvas = document.getElementById('shareCanvas');
-  const link = document.createElement('a');
   const order = app.currentOrder;
-  link.download = `行程_${order.fromCity}_${order.toCity}_${Date.now()}.png`;
-  link.href = canvas.toDataURL('image/png');
+  const fileName = `行程_${order.fromCity}_${order.toCity}_${Date.now()}.png`;
+
+  const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+  if (!blob) {
+    showToast('生成图片失败，请重试');
+    return;
+  }
+
+  const file = new File([blob], fileName, { type: 'image/png' });
+
+  // 优先走系统分享面板（移动端可直接"存储图像"到相册）
+  if (navigator.canShare && navigator.canShare({ files: [file] }) && navigator.share) {
+    try {
+      await navigator.share({ files: [file], title: '我的行程' });
+      showToast('已打开分享，选择"存储图像"即可存入相册');
+      return;
+    } catch (err) {
+      // 用户主动取消分享面板时也会走到这里，不算失败，不再继续走降级逻辑
+      if (err && err.name === 'AbortError') return;
+    }
+  }
+
+  // 降级方案一：新标签页打开图片，提示用户长按保存到相册（iOS Safari等常见路径）
+  const blobUrl = URL.createObjectURL(blob);
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (isMobile) {
+    window.open(blobUrl, '_blank');
+    showToast('已在新标签页打开图片，长按图片选择"存储图像"即可保存到相册');
+    setTimeout(() => URL.revokeObjectURL(blobUrl), 60000);
+    return;
+  }
+
+  // 降级方案二：桌面浏览器直接触发文件下载
+  const link = document.createElement('a');
+  link.download = fileName;
+  link.href = blobUrl;
   link.click();
-  showToast('图片已保存');
+  showToast('图片已下载');
+  setTimeout(() => URL.revokeObjectURL(blobUrl), 5000);
 }
 
 function closeShareModal() {
