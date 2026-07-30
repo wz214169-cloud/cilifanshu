@@ -28,9 +28,3113 @@ body {
   color: var(--text);
   -webkit-font-smoothing: antialiased;
 }
+
+/* === PAGES === */
+.page { display: none; min-height: 100vh; padding-bottom: env(safe-area-inset-bottom); }
+.page.active { display: block; }
+
+/* === SEARCH PAGE === */
+.search-page {
+  background: linear-gradient(180deg, var(--primary) 0%, var(--primary) 220px, var(--bg) 220px);
+}
+
+.search-header {
+  padding: 20px 20px 0;
+  color: white;
+}
+
+.header-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-header h1 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.my-trips-entry {
+  font-size: 13px;
+  color: white;
+  background: rgba(255,255,255,0.16);
+  padding: 7px 14px;
+  border-radius: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background 0.2s;
+}
+
+.my-trips-entry:active { background: rgba(255,255,255,0.28); }
+
+.trips-badge {
+  background: #ff6a00;
+  color: white;
+  font-size: 11px;
+  padding: 1px 6px;
+  border-radius: 8px;
+  min-width: 16px;
+  text-align: center;
+  display: none;
+}
+
+/* Transport Tabs */
+.transport-tabs {
+  display: flex;
+  gap: 0;
+  padding: 16px 20px;
+}
+
+.transport-tab {
+  flex: 1;
+  text-align: center;
+  padding: 10px 0;
+  color: rgba(255,255,255,0.7);
+  font-size: 15px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s;
+}
+
+.transport-tab.active {
+  color: white;
+  font-weight: 600;
+  border-bottom-color: white;
+}
+
+/* Search Form */
+.search-form {
+  margin: 0 16px;
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 30px rgba(0, 82, 217, 0.15);
+}
+
+.route-selector {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.city-input {
+  flex: 1;
+  text-align: center;
+}
+
+.city-input label {
+  display: block;
+  font-size: 12px;
+  color: var(--text3);
+  margin-bottom: 4px;
+}
+
+.city-input .city-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.city-input .city-name:hover {
+  background: var(--primary-light);
+}
+
+.swap-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+
+.swap-btn:active {
+  transform: rotate(180deg);
+}
+
+.date-row {
+  display: flex;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.date-row .icon { font-size: 18px; margin-right: 10px; color: var(--text3); }
+.date-row .date-text { font-size: 16px; font-weight: 500; }
+.date-row .week { font-size: 13px; color: var(--text3); margin-left: 8px; }
+
+.passenger-row {
+  display: flex;
+  align-items: center;
+  padding: 16px 0;
+  cursor: pointer;
+}
+
+.passenger-row .icon { font-size: 18px; margin-right: 10px; color: var(--text3); }
+.passenger-row .text { font-size: 15px; color: var(--text2); }
+
+.search-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--primary), #1976d2);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: all 0.2s;
+  box-shadow: 0 4px 15px rgba(0, 82, 217, 0.3);
+}
+
+.search-btn:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 8px rgba(0, 82, 217, 0.3);
+}
+
+/* Hot Routes */
+.hot-routes {
+  margin: 20px 16px;
+}
+
+.hot-routes h3 {
+  font-size: 15px;
+  color: var(--text2);
+  margin-bottom: 12px;
+}
+
+.hot-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hot-tag {
+  padding: 8px 14px;
+  background: white;
+  border-radius: 20px;
+  font-size: 13px;
+  color: var(--text2);
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.hot-tag:active {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+/* === LOADING PAGE === */
+.loading-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.loading-text {
+  font-size: 14px;
+  color: var(--text3);
+}
+
+/* === GENERIC HEADER (results/fare/pay/trips/detail) === */
+.results-header {
+  background: white;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.back-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 50%;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.back-btn:active { background: var(--bg); }
+
+.results-title {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.results-date {
+  font-size: 13px;
+  color: var(--text3);
+  white-space: nowrap;
+}
+
+/* Filter Bar */
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  background: white;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+}
+
+.filter-chip {
+  padding: 6px 14px;
+  border-radius: 16px;
+  font-size: 13px;
+  background: var(--bg);
+  color: var(--text2);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-chip.active {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 500;
+}
+
+/* Flight Result Card */
+.result-list { padding: 12px 16px; }
+
+.flight-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.flight-card:active {
+  transform: scale(0.98);
+  background: #fafbfc;
+}
+
+.flight-main {
+  display: flex;
+  align-items: center;
+}
+
+.flight-time {
+  text-align: center;
+  min-width: 55px;
+}
+
+.flight-time .time {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.flight-time .station {
+  font-size: 12px;
+  color: var(--text3);
+  margin-top: 2px;
+}
+
+.flight-middle {
+  flex: 1;
+  text-align: center;
+  padding: 0 10px;
+}
+
+.flight-middle .duration {
+  font-size: 12px;
+  color: var(--text3);
+}
+
+.flight-middle .line {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 20px;
+  position: relative;
+}
+
+.flight-middle .line::after {
+  content: '';
+  position: absolute;
+  right: -3px;
+  top: -3px;
+  width: 7px;
+  height: 7px;
+  border-top: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  transform: rotate(45deg);
+}
+
+.flight-middle .type-info {
+  font-size: 11px;
+  color: var(--text3);
+  margin-top: 2px;
+}
+
+.flight-price {
+  text-align: right;
+  min-width: 70px;
+}
+
+.flight-price .price {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--orange);
+}
+
+.flight-price .price .yen { font-size: 13px; font-weight: 400; }
+
+.flight-price .discount {
+  font-size: 11px;
+  color: var(--green);
+  margin-top: 2px;
+}
+
+.flight-tags {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
+}
+
+.flight-tag {
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.flight-tag.green { background: #e8f5e9; color: #2e7d32; }
+.flight-tag.blue { background: #e3f2fd; color: #1565c0; }
+
+/* Train-specific styles */
+.train-number {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+/* === FARE SELECTION PAGE === */
+.fare-summary {
+  background: white;
+  padding: 16px;
+  margin: 12px 16px;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.fare-summary-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.fare-summary-top .icon { font-size: 20px; }
+.fare-summary-top .code { font-weight: 600; font-size: 14px; }
+.fare-summary-top .sub { font-size: 12px; color: var(--text3); }
+
+.fare-summary-route {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text2);
+  padding-top: 8px;
+  border-top: 1px dashed var(--border);
+}
+
+.fare-summary-route .fs-city { font-size: 16px; font-weight: 700; color: var(--text); }
+.fare-summary-route .fs-mid { text-align: center; font-size: 11px; color: var(--text3); }
+
+.fare-list-title {
+  padding: 4px 20px 8px;
+  font-size: 13px;
+  color: var(--text3);
+}
+
+.fare-list { padding: 0 16px 90px; }
+
+.fare-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  border: 1.5px solid transparent;
+  transition: all 0.2s;
+}
+
+.fare-card.recommended { border-color: var(--primary); }
+
+.fare-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.fare-name {
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.fare-tag {
+  font-size: 11px;
+  background: #fff3e0;
+  color: #e65100;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 400;
+}
+
+.fare-card.recommended .fare-tag { background: var(--primary-light); color: var(--primary); }
+
+.fare-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--orange);
+  white-space: nowrap;
+}
+
+.fare-price .yen { font-size: 12px; font-weight: 400; }
+
+.fare-info-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text2);
+  padding: 4px 0;
+}
+
+.fare-info-row .fi-icon { font-size: 14px; width: 18px; text-align: center; flex-shrink: 0; }
+
+.fare-select-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.fare-card.recommended .fare-select-btn {
+  background: linear-gradient(135deg, var(--primary), #1976d2);
+  color: white;
+}
+
+.fare-select-btn:active { transform: scale(0.97); }
+
+/* === PAY PAGE === */
+.pay-summary-card {
+  background: white;
+  margin: 12px 16px;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.pay-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 13px;
+  color: var(--text2);
+}
+
+.pay-row .val { color: var(--text); font-weight: 500; }
+
+.pay-row.total {
+  border-top: 1px dashed var(--border);
+  margin-top: 6px;
+  padding-top: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.pay-row.total .val { color: var(--orange); font-size: 19px; }
+
+.pay-section-title {
+  padding: 14px 20px 8px;
+  font-size: 13px;
+  color: var(--text3);
+}
+
+.pay-method-list {
+  background: white;
+  margin: 0 16px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.pay-method {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.pay-method:last-child { border-bottom: none; }
+.pay-method .pm-icon { font-size: 20px; }
+.pay-method .pm-name { flex: 1; font-size: 14px; }
+.pay-method .pm-radio {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.pay-method.selected .pm-radio { border-color: var(--primary); background: var(--primary); }
+.pay-method.selected .pm-radio::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background: white;
+  border-radius: 50%;
+}
+
+.pay-footer-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 12px 16px;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.06);
+  z-index: 200;
+}
+
+.pay-footer-amount { font-size: 13px; color: var(--text2); }
+.pay-footer-amount span { color: var(--orange); font-weight: 700; font-size: 19px; margin-left: 4px; }
+
+.pay-footer-btn {
+  background: linear-gradient(135deg, var(--primary), #1976d2);
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 22px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pay-footer-btn:active { transform: scale(0.96); }
+
+/* === PASSWORD MODAL (bottom sheet) === */
+.pwd-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 9998;
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.pwd-overlay.active { display: flex; }
+
+.pwd-sheet {
+  background: white;
+  width: 100%;
+  max-width: 480px;
+  border-radius: 20px 20px 0 0;
+  padding: 20px 20px calc(20px + env(safe-area-inset-bottom));
+  animation: sheet-up 0.25s ease-out;
+  position: relative;
+}
+
+@keyframes sheet-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.pwd-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.pwd-header .pwd-close { font-size: 18px; color: var(--text3); cursor: pointer; padding: 4px; }
+.pwd-header .pwd-title { font-size: 15px; font-weight: 600; }
+
+.pwd-payee { text-align: center; font-size: 12px; color: var(--text3); margin-top: 10px; }
+
+.pwd-amount {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 8px 0 24px;
+}
+
+.pwd-amount .yen { font-size: 16px; font-weight: 400; margin-right: 2px; }
+
+.pwd-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.pwd-dot-box {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  transition: border-color 0.2s;
+}
+
+.pwd-dot-box .filled-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--text);
+  display: none;
+}
+
+.pwd-dot-box.filled .filled-dot { display: block; }
+
+.pwd-hidden-input {
+  position: absolute;
+  opacity: 0;
+  height: 1px;
+  width: 1px;
+  left: 50%;
+  bottom: 0;
+}
+
+.pwd-hint {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text3);
+  margin-top: 16px;
+}
+
+.pwd-processing {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 0 8px;
+}
+
+.pwd-processing.show { display: flex; }
+.pwd-processing .loading-spinner { margin-bottom: 12px; }
+.pwd-processing .pt { font-size: 14px; color: var(--text2); }
+
+/* === ORDER SUCCESS PAGE === */
+.success-page {
+  background: linear-gradient(180deg, var(--primary) 0%, var(--primary) 180px, var(--bg) 180px);
+  padding-bottom: 30px;
+  min-height: 100vh;
+}
+
+.success-header {
+  text-align: center;
+  padding: 30px 20px;
+  color: white;
+}
+
+.success-icon {
+  font-size: 50px;
+  margin-bottom: 12px;
+  animation: bounce 0.6s;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.success-header h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.success-header p {
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+/* Order Card */
+.order-card {
+  margin: 0 16px;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+.order-card-header {
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #f8faff, #eef4ff);
+  border-bottom: 1px dashed var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.order-card-header .icon { font-size: 24px; }
+.order-card-header .info { flex: 1; }
+.order-card-header .code { font-size: 14px; font-weight: 600; color: var(--text); }
+.order-card-header .date { font-size: 12px; color: var(--text3); margin-top: 2px; }
+.order-card-header .status-badge {
+  font-size: 12px;
+  color: var(--green);
+  background: #e8f5e9;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.order-route {
+  padding: 24px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.order-city {
+  text-align: center;
+  flex: 1;
+}
+
+.order-city .time {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.order-city .name {
+  font-size: 14px;
+  color: var(--text2);
+  margin-top: 4px;
+}
+
+.order-city .station {
+  font-size: 12px;
+  color: var(--text3);
+  margin-top: 2px;
+}
+
+.order-arrow {
+  padding: 0 15px;
+  text-align: center;
+}
+
+.order-arrow .duration {
+  font-size: 12px;
+  color: var(--text3);
+}
+
+.order-arrow .arrow-line {
+  width: 60px;
+  height: 1px;
+  background: var(--border);
+  margin: 6px auto;
+  position: relative;
+}
+
+.order-arrow .arrow-line::after {
+  content: '>';
+  position: absolute;
+  right: -4px;
+  top: -8px;
+  font-size: 12px;
+  color: var(--text3);
+}
+
+.order-details {
+  padding: 16px 20px;
+  border-top: 1px solid var(--border);
+}
+
+.order-detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.order-detail-row .label { font-size: 13px; color: var(--text3); }
+.order-detail-row .value { font-size: 13px; color: var(--text); font-weight: 500; text-align: right; max-width: 60%; }
+
+.order-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-top: 1px solid var(--border);
+  background: #fffbf5;
+}
+
+.order-price-row .label { font-size: 14px; color: var(--text2); }
+.order-price-row .price { font-size: 24px; font-weight: 700; color: var(--orange); }
+.order-price-row .price .yen { font-size: 14px; }
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  padding: 20px 16px;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 14px;
+  border-radius: 25px;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.action-btn.primary {
+  background: linear-gradient(135deg, var(--primary), #1976d2);
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 82, 217, 0.3);
+}
+
+.action-btn.secondary {
+  background: white;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.action-btn:active { transform: scale(0.97); }
+
+.success-link {
+  text-align: center;
+  color: var(--primary);
+  font-size: 13px;
+  padding: 4px 16px 0;
+  cursor: pointer;
+}
+
+/* === MY TRIPS PAGE === */
+.trips-stats {
+  display: flex;
+  background: white;
+  margin: 12px 16px;
+  border-radius: 12px;
+  padding: 14px 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.trips-stats .stat { flex: 1; text-align: center; border-right: 1px solid var(--border); }
+.trips-stats .stat:last-child { border-right: none; }
+.trips-stats .stat .num { font-size: 18px; font-weight: 700; color: var(--primary); }
+.trips-stats .stat .lbl { font-size: 12px; color: var(--text3); margin-top: 2px; }
+
+.trips-list { padding: 0 16px 20px; }
+
+.trip-item {
+  background: white;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.trip-item:active { transform: scale(0.98); }
+
+.trip-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.trip-item-top .route { font-size: 15px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.trip-item-top .price { font-size: 15px; font-weight: 700; color: var(--orange); }
+
+.trip-item-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text3);
+}
+
+.trip-item-status {
+  display: inline-block;
+  font-size: 11px;
+  color: var(--green);
+  background: #e8f5e9;
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+
+.trips-empty {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text3);
+  font-size: 14px;
+}
+
+.trips-empty .big { font-size: 40px; margin-bottom: 12px; }
+
+/* === SHARE IMAGE MODAL === */
+.share-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.share-modal.active { display: flex; }
+
+.share-content {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  max-width: 380px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.share-content h3 {
+  font-size: 17px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.share-canvas-wrap {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  margin-bottom: 16px;
+}
+
+.share-canvas-wrap canvas {
+  width: 100%;
+  display: block;
+}
+
+.share-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.share-actions button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.share-actions .save-btn {
+  background: var(--primary);
+  color: white;
+}
+
+.share-actions .close-btn {
+  background: var(--bg);
+  color: var(--text2);
+}
+
+.share-actions .shuffle-btn {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.share-tpl-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.share-tpl-tab {
+  flex: 1;
+  text-align: center;
+  padding: 9px 4px;
+  border-radius: 12px;
+  background: var(--bg);
+  color: var(--text2);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.share-tpl-tab.active {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 82, 217, 0.3);
+}
+
+/* City Picker Modal */
+.city-modal {
+  position: fixed;
+  inset: 0;
+  background: white;
+  z-index: 9999;
+  display: none;
+  flex-direction: column;
+}
+
+.city-modal.active { display: flex; }
+
+.city-modal-header {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.city-modal-header .close { font-size: 20px; cursor: pointer; padding: 5px; }
+.city-modal-header input {
+  flex: 1;
+  border: none;
+  font-size: 15px;
+  outline: none;
+  padding: 8px 12px;
+  background: var(--bg);
+  border-radius: 8px;
+}
+
+.city-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 0;
+}
+
+.city-group-title {
+  padding: 8px 20px;
+  font-size: 13px;
+  color: var(--text3);
+  background: var(--bg);
+  font-weight: 500;
+}
+
+.city-item {
+  padding: 14px 20px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.city-item:active { background: var(--primary-light); }
+
+.city-item-country {
+  font-size: 12px;
+  color: var(--text3);
+}
+
+/* Date Picker Modal */
+.date-modal {
+  position: fixed;
+  inset: 0;
+  background: white;
+  z-index: 9999;
+  display: none;
+  flex-direction: column;
+}
+
+.date-modal.active { display: flex; }
+
+.date-modal-header {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.date-modal-header .close { font-size: 20px; cursor: pointer; padding: 5px; }
+.date-modal-header .dm-title { flex: 1; font-size: 16px; font-weight: 600; text-align: center; }
+.date-modal-header .dm-spacer { width: 30px; }
+
+.date-weekday-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 10px 16px 0;
+  flex-shrink: 0;
+}
+
+.date-weekday-row span {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text3);
+}
+
+.date-modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 16px 20px;
+}
+
+.month-block { margin-top: 18px; }
+
+.month-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.day-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.day-cell {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.15s;
+}
+
+.day-cell.empty { cursor: default; }
+
+.day-cell .dnum { font-size: 14px; color: var(--text); }
+.day-cell .dtag { font-size: 10px; color: var(--text3); margin-top: 1px; }
+
+.day-cell.past { cursor: default; }
+.day-cell.past .dnum, .day-cell.past .dtag { color: #ccc; }
+
+.day-cell.today .dnum { color: var(--primary); font-weight: 700; }
+.day-cell.today .dtag { color: var(--primary); }
+
+.day-cell.selected { background: var(--primary); }
+.day-cell.selected .dnum { color: white; font-weight: 700; }
+.day-cell.selected .dtag { color: rgba(255,255,255,0.85); }
+
+.day-cell:not(.past):not(.empty):active { background: var(--primary-light); }
+.day-cell.selected:active { background: var(--primary); }
+
+/* Confetti */
+.confetti-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99999;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  animation: confetti-fall 2s ease-out forwards;
+}
+
+@keyframes confetti-fall {
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* Toast */
+.app-toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: rgba(0,0,0,0.8);
+  color: white;
+  padding: 16px 30px;
+  border-radius: 12px;
+  font-size: 15px;
+  z-index: 99999;
+  opacity: 0;
+  transition: all 0.3s;
+  pointer-events: none;
+  text-align: center;
+}
+
+.app-toast.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
 </style>
 </head>
 <body>
-<div id="pending-full-restore">正在恢复...</div>
+
+<!-- Search Page -->
+<div class="page active" id="page-search">
+  <div class="search-page">
+    <div class="search-header">
+      <div class="header-top-row">
+        <h1>出行</h1>
+        <div class="my-trips-entry" onclick="openMyTrips()">
+          📋 我的行程 <span class="trips-badge" id="tripsBadge">0</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="transport-tabs">
+      <div class="transport-tab active" data-type="plane">机票</div>
+      <div class="transport-tab" data-type="highspeed">高铁/动车</div>
+      <div class="transport-tab" data-type="train">火车</div>
+    </div>
+    
+    <div class="search-form">
+      <div class="route-selector">
+        <div class="city-input">
+          <label>出发</label>
+          <div class="city-name" id="fromCity" onclick="openCityPicker('from')">北京</div>
+        </div>
+        <div class="swap-btn" onclick="swapCities()">⇄</div>
+        <div class="city-input">
+          <label>到达</label>
+          <div class="city-name" id="toCity" onclick="openCityPicker('to')">上海</div>
+        </div>
+      </div>
+      
+      <div class="date-row" onclick="openDatePicker()">
+        <span class="icon">📅</span>
+        <span class="date-text" id="dateText">7月31日</span>
+        <span class="week" id="weekText">周四</span>
+      </div>
+      
+      <div class="passenger-row">
+        <span class="icon">👤</span>
+        <span class="text">1位成人</span>
+      </div>
+      
+      <button class="search-btn" onclick="doSearch()">搜索</button>
+    </div>
+    
+    <div class="hot-routes">
+      <h3 id="hotRoutesTitle">🔥 热门线路</h3>
+      <div class="hot-tags" id="hotTags"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Loading Page -->
+<div class="page" id="page-loading">
+  <div class="loading-page">
+    <div class="loading-spinner"></div>
+    <div class="loading-text" id="loadingText">正在搜索航班...</div>
+  </div>
+</div>
+
+<!-- Results Page -->
+<div class="page" id="page-results">
+  <div class="results-header">
+    <div class="back-btn" onclick="showPage('page-search')">←</div>
+    <div class="results-title" id="resultsTitle">北京 → 上海</div>
+    <div class="results-date" id="resultsDate">7月31日 周四</div>
+  </div>
+  <div class="filter-bar" id="filterBar"></div>
+  <div class="result-list" id="resultList"></div>
+</div>
+
+<!-- Fare Selection Page -->
+<div class="page" id="page-fare">
+  <div class="results-header">
+    <div class="back-btn" onclick="showPage('page-results')">←</div>
+    <div class="results-title">选择票价</div>
+    <div class="results-date" id="fareDate"></div>
+  </div>
+  <div class="fare-summary" id="fareSummary"></div>
+  <div class="fare-list-title">可选票价档位</div>
+  <div class="fare-list" id="fareList"></div>
+</div>
+
+<!-- Pay Page -->
+<div class="page" id="page-pay">
+  <div class="results-header">
+    <div class="back-btn" onclick="showPage('page-fare')">←</div>
+    <div class="results-title">确认订单</div>
+    <div class="results-date" id="payDate"></div>
+  </div>
+  <div class="pay-summary-card" id="paySummaryCard"></div>
+  <div class="pay-section-title">选择支付方式</div>
+  <div class="pay-method-list" id="payMethodList"></div>
+  <div style="height:100px"></div>
+  <div class="pay-footer-bar">
+    <div class="pay-footer-amount">应付金额<span id="payFooterAmount">¥0</span></div>
+    <button class="pay-footer-btn" onclick="openPasswordModal()">确认支付</button>
+  </div>
+</div>
+
+<!-- Success Page -->
+<div class="page" id="page-success">
+  <div class="success-page">
+    <div class="success-header">
+      <div class="success-icon">🎉</div>
+      <h2>购票成功</h2>
+      <p>订单已生成，行程信息如下</p>
+    </div>
+    
+    <div class="order-card" id="orderCard"></div>
+    
+    <div class="success-link" onclick="openMyTrips()">查看我的全部行程 ›</div>
+    
+    <div class="action-buttons">
+      <button class="action-btn secondary" onclick="showPage('page-search')">返回首页</button>
+      <button class="action-btn primary" onclick="generateShareImage()">生成分享图</button>
+    </div>
+  </div>
+</div>
+
+<!-- My Trips Page -->
+<div class="page" id="page-my-trips">
+  <div class="results-header">
+    <div class="back-btn" onclick="showPage('page-search')">←</div>
+    <div class="results-title">我的行程</div>
+    <div class="results-date"></div>
+  </div>
+  <div class="trips-stats" id="tripsStats"></div>
+  <div class="trips-list" id="tripsList"></div>
+</div>
+
+<!-- Trip Detail Page -->
+<div class="page" id="page-trip-detail">
+  <div class="results-header">
+    <div class="back-btn" onclick="showPage('page-my-trips')">←</div>
+    <div class="results-title">行程详情</div>
+    <div class="results-date"></div>
+  </div>
+  <div class="order-card" id="tripDetailCard" style="margin:16px;"></div>
+  <div class="action-buttons">
+    <button class="action-btn secondary" onclick="deleteCurrentTrip()">删除该订单</button>
+    <button class="action-btn primary" onclick="generateShareImage()">生成分享图</button>
+  </div>
+</div>
+
+<!-- Password Modal -->
+<div class="pwd-overlay" id="pwdOverlay">
+  <div class="pwd-sheet">
+    <div class="pwd-header">
+      <span></span>
+      <span class="pwd-title">请输入支付密码</span>
+      <span class="pwd-close" onclick="closePasswordModal()">✕</span>
+    </div>
+    <div class="pwd-payee" id="pwdPayee">支付给 出行助手</div>
+    <div class="pwd-amount"><span class="yen">¥</span><span id="pwdAmount">0</span></div>
+    
+    <div id="pwdInputArea">
+      <div class="pwd-dots" id="pwdDots">
+        <div class="pwd-dot-box"><div class="filled-dot"></div></div>
+        <div class="pwd-dot-box"><div class="filled-dot"></div></div>
+        <div class="pwd-dot-box"><div class="filled-dot"></div></div>
+        <div class="pwd-dot-box"><div class="filled-dot"></div></div>
+        <div class="pwd-dot-box"><div class="filled-dot"></div></div>
+        <div class="pwd-dot-box"><div class="filled-dot"></div></div>
+      </div>
+      <div class="pwd-hint">输入任意6位数字完成支付</div>
+    </div>
+    
+    <div class="pwd-processing" id="pwdProcessing">
+      <div class="loading-spinner"></div>
+      <div class="pt">正在支付...</div>
+    </div>
+    
+    <input type="tel" class="pwd-hidden-input" id="pwdHiddenInput" maxlength="6" inputmode="numeric" autocomplete="off">
+  </div>
+</div>
+
+<!-- Share Modal -->
+<div class="share-modal" id="shareModal">
+  <div class="share-content">
+    <h3>✨ 行程分享图</h3>
+    <div class="share-tpl-tabs" id="shareTplTabs">
+      <div class="share-tpl-tab active" data-tpl="boarding" onclick="selectShareTemplate('boarding')">🎫 拟真机票</div>
+      <div class="share-tpl-tab" data-tpl="quit" onclick="selectShareTemplate('quit')">🔥 到此为止</div>
+    </div>
+    <div class="share-canvas-wrap">
+      <canvas id="shareCanvas" width="640" height="1000"></canvas>
+    </div>
+    <div class="share-actions">
+      <button class="close-btn" onclick="closeShareModal()">关闭</button>
+      <button class="shuffle-btn" id="shareShuffleBtn" onclick="shuffleShareLine()">🎲 换一句</button>
+      <button class="save-btn" onclick="saveShareImage()">保存图片</button>
+    </div>
+  </div>
+</div>
+
+<!-- City Picker -->
+<div class="city-modal" id="cityModal">
+  <div class="city-modal-header">
+    <span class="close" onclick="closeCityPicker()">✕</span>
+    <input type="text" placeholder="搜索城市" id="citySearchInput" oninput="filterCities()">
+  </div>
+  <div class="city-list" id="cityList"></div>
+</div>
+
+<!-- Date Picker -->
+<div class="date-modal" id="dateModal">
+  <div class="date-modal-header">
+    <span class="close" onclick="closeDatePicker()">✕</span>
+    <span class="dm-title">选择出发日期</span>
+    <span class="dm-spacer"></span>
+  </div>
+  <div class="date-weekday-row">
+    <span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
+  </div>
+  <div class="date-modal-body" id="dateModalBody"></div>
+</div>
+
+<!-- Toast -->
+<div class="app-toast" id="appToast"></div>
+
+<!-- Confetti container -->
+<div class="confetti-container" id="confettiContainer"></div>
+
+<script>
+// === APP STATE ===
+const app = {
+  transportType: 'plane',
+  fromCity: '北京',
+  toCity: '上海',
+  date: null,
+  dateText: '',
+  weekText: '',
+  currentResults: [],
+  selectedResult: null,
+  currentFareOptions: [],
+  selectedFare: null,
+  selectedPayMethod: 'wechat',
+  currentOrder: null,
+  cityPickerTarget: 'from',
+  pwdDigits: '',
+  shareTemplate: 'boarding',
+  shareLineIndex: 0,
+};
+
+const STORAGE_KEY = 'travel_ticket_orders_v1';
+
+// === CITY DATA ===
+// 国内城市（高铁/火车/机票通用）
+const cities = {
+  '热门': ['北京', '上海', '广州', '深圳', '成都', '杭州', '重庆', '武汉', '西安', '南京', '长沙', '厦门'],
+  'A-G': ['安庆', '北京', '长沙', '长春', '成都', '重庆', '大连', '福州', '广州', '贵阳', '桂林'],
+  'H-L': ['哈尔滨', '海口', '杭州', '合肥', '呼和浩特', '济南', '昆明', '兰州', '拉萨', '丽江', '洛阳'],
+  'M-S': ['南京', '南宁', '宁波', '青岛', '三亚', '上海', '深圳', '沈阳', '石家庄', '苏州'],
+  'T-Z': ['太原', '天津', '温州', '乌鲁木齐', '武汉', '西安', '厦门', '银川', '长沙', '郑州', '珠海'],
+};
+
+// 中国港澳台（仅机票，作为国内航线的延伸，不计入"国际"）
+const hkMoTwCities = {
+  '中国港澳台': ['中国香港', '中国澳门', '中国台北'],
+};
+
+// 全球国际城市（仅机票可选）
+const internationalCities = {
+  '亚洲': ['东京', '大阪', '首尔', '釜山', '新加坡', '曼谷', '吉隆坡', '迪拜', '河内', '马尼拉', '雅加达', '孟买'],
+  '欧洲': ['伦敦', '巴黎', '罗马', '法兰克福', '阿姆斯特丹', '苏黎世', '马德里', '莫斯科', '伊斯坦布尔'],
+  '美洲': ['纽约', '洛杉矶', '旧金山', '温哥华', '多伦多', '圣保罗'],
+  '大洋洲': ['悉尼', '墨尔本', '奥克兰'],
+  '非洲': ['开罗', '约翰内斯堡', '内罗毕'],
+};
+
+// 城市 → 国家/地区（用于列表展示与机场命名）
+const cityCountryMap = {
+  '中国香港': '中国', '中国澳门': '中国', '中国台北': '中国',
+  '东京': '日本', '大阪': '日本', '首尔': '韩国', '釜山': '韩国',
+  '新加坡': '新加坡', '曼谷': '泰国', '吉隆坡': '马来西亚', '迪拜': '阿联酋',
+  '河内': '越南', '马尼拉': '菲律宾', '雅加达': '印度尼西亚', '孟买': '印度',
+  '伦敦': '英国', '巴黎': '法国', '罗马': '意大利', '法兰克福': '德国',
+  '阿姆斯特丹': '荷兰', '苏黎世': '瑞士', '马德里': '西班牙', '莫斯科': '俄罗斯', '伊斯坦布尔': '土耳其',
+  '纽约': '美国', '洛杉矶': '美国', '旧金山': '美国', '温哥华': '加拿大', '多伦多': '加拿大', '圣保罗': '巴西',
+  '悉尼': '澳大利亚', '墨尔本': '澳大利亚', '奥克兰': '新西兰',
+  '开罗': '埃及', '约翰内斯堡': '南非', '内罗毕': '肯尼亚',
+};
+
+// 城市 → 三字机场/站点代码（用于分享图机票风格展示，覆盖不到的用拼音首字母兜底生成）
+const cityCodeMap = {
+  '北京':'PEK','上海':'SHA','广州':'CAN','深圳':'SZX','成都':'CTU','杭州':'HGH','重庆':'CKG','武汉':'WUH',
+  '西安':'XIY','南京':'NKG','长沙':'CSX','厦门':'XMN','哈尔滨':'HRB','海口':'HAK','三亚':'SYX','昆明':'KMG',
+  '拉萨':'LXA','青岛':'TAO','天津':'TSN','沈阳':'SHE','大连':'DLC','福州':'FOC','南宁':'NNG','贵阳':'KWE',
+  '兰州':'LHW','银川':'INC','乌鲁木齐':'URC','太原':'TYN','石家庄':'SJW','郑州':'CGO','济南':'TNA','长春':'CGQ',
+  '合肥':'HFE','南昌':'KHN','珠海':'ZUH','桂林':'KWL','丽江':'LJG','洛阳':'LYA','宁波':'NGB','苏州':'SZP',
+  '呼和浩特':'HET','温州':'WNZ','安庆':'AQG',
+  '中国香港':'HKG','中国澳门':'MFM','中国台北':'TPE',
+  '东京':'NRT','大阪':'KIX','首尔':'ICN','釜山':'PUS','新加坡':'SIN','曼谷':'BKK','吉隆坡':'KUL','迪拜':'DXB',
+  '河内':'HAN','马尼拉':'MNL','雅加达':'CGK','孟买':'BOM',
+  '伦敦':'LHR','巴黎':'CDG','罗马':'FCO','法兰克福':'FRA','阿姆斯特丹':'AMS','苏黎世':'ZRH','马德里':'MAD',
+  '莫斯科':'SVO','伊斯坦布尔':'IST',
+  '纽约':'JFK','洛杉矶':'LAX','旧金山':'SFO','温哥华':'YVR','多伦多':'YYZ','圣保罗':'GRU',
+  '悉尼':'SYD','墨尔本':'MEL','奥克兰':'AKL',
+  '开罗':'CAI','约翰内斯堡':'JNB','内罗毕':'NBO',
+};
+
+function getCityCode(city) {
+  if (cityCodeMap[city]) return cityCodeMap[city];
+  // 兜底：取前两个字的拉丁转写占位（无拼音库场景下退化为通用码）
+  return 'XXX';
+}
+
+let domesticCitySet = null;
+function getDomesticCitySet() {
+  if (domesticCitySet) return domesticCitySet;
+  const set = new Set();
+  Object.values(cities).forEach(arr => arr.forEach(c => set.add(c)));
+  domesticCitySet = set;
+  return set;
+}
+
+function isDomesticCity(city) {
+  return getDomesticCitySet().has(city);
+}
+
+// 根据当前交通方式返回城市选择器可用的数据源
+function getCityPickerData() {
+  if (app.transportType === 'plane') {
+    return Object.assign({}, cities, hkMoTwCities, internationalCities);
+  }
+  return cities;
+}
+
+// === ROUTE DATA ===
+const flightDB = {
+  airlines: ['中国国航', '东方航空', '南方航空', '海南航空', '深圳航空', '厦门航空', '四川航空', '春秋航空', '吉祥航空'],
+  planeModels: ['A320', 'A321', 'A330', 'B737', 'B738', 'B787', 'B777', 'C919', 'ARJ21'],
+  intlAirlines: ['中国国航', '东方航空', '南方航空', '国泰航空', '全日空', '新加坡航空', '阿联酋航空', '大韩航空', '汉莎航空', '法国航空', '美国联合航空'],
+  intlPrefixes: ['CA', 'MU', 'CZ', 'CX', 'NH', 'SQ', 'EK', 'KE', 'LH', 'AF', 'UA'],
+  wideBodyModels: ['A330', 'A350', 'B777', 'B787', 'B747'],
+};
+
+const trainDB = {
+  highspeed: { prefix: ['G', 'D', 'C'], seatTypes: ['二等座', '一等座', '商务座'] },
+  train: { prefix: ['T', 'Z', 'K'], seatTypes: ['硬座', '硬卧', '软卧'] },
+};
+
+const payMethods = [
+  { key: 'wechat', icon: '🟢', name: '微信支付' },
+  { key: 'alipay', icon: '🔵', name: '支付宝' },
+  { key: 'unionpay', icon: '💳', name: '银联卡支付' },
+];
+
+// === INIT ===
+function init() {
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  app.date = tomorrow;
+  updateDateDisplay();
+  
+  document.querySelectorAll('.transport-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.transport-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      app.transportType = tab.dataset.type;
+      
+      // 高铁/火车仅支持国内城市，切换后如当前城市为国际城市则重置
+      if (app.transportType !== 'plane') {
+        let reset = false;
+        if (!isDomesticCity(app.fromCity)) { app.fromCity = '北京'; reset = true; }
+        if (!isDomesticCity(app.toCity)) { app.toCity = '上海'; reset = true; }
+        if (reset) {
+          document.getElementById('fromCity').textContent = app.fromCity;
+          document.getElementById('toCity').textContent = app.toCity;
+          showToast('该交通方式仅支持国内城市，已重置出发/到达');
+        }
+      }
+      
+      renderHotTags();
+    });
+  });
+  
+  document.getElementById('pwdHiddenInput').addEventListener('input', handlePwdInput);
+  
+  updateTripsBadge();
+  renderHotTags();
+}
+
+// === HOT ROUTES ===
+const domesticHotRoutes = [['北京','三亚'],['上海','成都'],['广州','昆明'],['深圳','重庆'],['杭州','西安'],['成都','拉萨'],['北京','哈尔滨'],['上海','厦门']];
+const internationalHotRoutes = [['北京','东京'],['上海','首尔'],['广州','新加坡'],['深圳','中国香港'],['北京','伦敦'],['上海','纽约'],['广州','悉尼'],['成都','迪拜']];
+
+function renderHotTags() {
+  const container = document.getElementById('hotTags');
+  const title = document.getElementById('hotRoutesTitle');
+  let routes;
+  if (app.transportType === 'plane') {
+    title.textContent = '🔥 热门线路（国内+国际）';
+    routes = domesticHotRoutes.slice(0, 4).concat(internationalHotRoutes.slice(0, 4));
+  } else {
+    title.textContent = '🔥 热门线路';
+    routes = domesticHotRoutes;
+  }
+  container.innerHTML = routes.map(r => `<div class="hot-tag" onclick="quickSearch('${r[0]}','${r[1]}')">${r[0]}→${r[1]}</div>`).join('');
+}
+
+function updateDateDisplay() {
+  const d = app.date;
+  const weeks = ['周日','周一','周二','周三','周四','周五','周六'];
+  app.dateText = `${d.getMonth()+1}月${d.getDate()}日`;
+  app.weekText = weeks[d.getDay()];
+  document.getElementById('dateText').textContent = app.dateText;
+  document.getElementById('weekText').textContent = app.weekText;
+}
+
+// === CITY PICKER ===
+function openCityPicker(target) {
+  app.cityPickerTarget = target;
+  document.getElementById('cityModal').classList.add('active');
+  document.getElementById('citySearchInput').value = '';
+  renderCityList(getCityPickerData());
+}
+
+function closeCityPicker() {
+  document.getElementById('cityModal').classList.remove('active');
+}
+
+function renderCityList(data) {
+  const list = document.getElementById('cityList');
+  let html = '';
+  Object.keys(data).forEach(group => {
+    html += `<div class="city-group-title">${group}</div>`;
+    data[group].forEach(city => {
+      const country = cityCountryMap[city];
+      html += `<div class="city-item" onclick="selectCity('${city}')">${city}${country ? `<span class="city-item-country">${country}</span>` : ''}</div>`;
+    });
+  });
+  list.innerHTML = html;
+}
+
+function filterCities() {
+  const keyword = document.getElementById('citySearchInput').value.trim();
+  const source = getCityPickerData();
+  if (!keyword) { renderCityList(source); return; }
+  const filtered = {};
+  Object.keys(source).forEach(group => {
+    const matches = source[group].filter(c => c.includes(keyword) || (cityCountryMap[c] && cityCountryMap[c].includes(keyword)));
+    if (matches.length) filtered[group] = matches;
+  });
+  renderCityList(Object.keys(filtered).length ? filtered : { '搜索结果': ['未找到匹配城市'] });
+}
+
+function selectCity(city) {
+  if (city === '未找到匹配城市') return;
+  if (app.cityPickerTarget === 'from') {
+    app.fromCity = city;
+    document.getElementById('fromCity').textContent = city;
+  } else {
+    app.toCity = city;
+    document.getElementById('toCity').textContent = city;
+  }
+  closeCityPicker();
+}
+
+function swapCities() {
+  [app.fromCity, app.toCity] = [app.toCity, app.fromCity];
+  document.getElementById('fromCity').textContent = app.fromCity;
+  document.getElementById('toCity').textContent = app.toCity;
+}
+
+// === DATE PICKER (calendar) ===
+function openDatePicker() {
+  renderDateModal();
+  document.getElementById('dateModal').classList.add('active');
+}
+
+function closeDatePicker() {
+  document.getElementById('dateModal').classList.remove('active');
+}
+
+function isSameDay(a, b) {
+  return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
+}
+
+function renderDateModal() {
+  const body = document.getElementById('dateModalBody');
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const selected = new Date(app.date);
+  selected.setHours(0, 0, 0, 0);
+
+  let html = '';
+  // Render current month + next 2 months
+  for (let m = 0; m < 3; m++) {
+    const monthDate = new Date(today.getFullYear(), today.getMonth() + m, 1);
+    const year = monthDate.getFullYear();
+    const month = monthDate.getMonth();
+    const firstWeekday = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    html += `<div class="month-block"><div class="month-title">${year}年${month + 1}月</div><div class="day-grid">`;
+
+    for (let i = 0; i < firstWeekday; i++) {
+      html += `<div class="day-cell empty"></div>`;
+    }
+
+    for (let d = 1; d <= daysInMonth; d++) {
+      const cellDate = new Date(year, month, d);
+      const isPast = cellDate < today;
+      const isToday = isSameDay(cellDate, today);
+      const isSelected = isSameDay(cellDate, selected);
+
+      let cls = 'day-cell';
+      if (isPast) cls += ' past';
+      if (isToday) cls += ' today';
+      if (isSelected && !isPast) cls += ' selected';
+
+      let tag = '';
+      if (isToday) tag = '今天';
+
+      const clickAttr = isPast ? '' : `onclick="pickDateCell(${year},${month},${d})"`;
+
+      html += `<div class="${cls}" ${clickAttr}>
+        <div class="dnum">${d}</div>
+        ${tag ? `<div class="dtag">${tag}</div>` : ''}
+      </div>`;
+    }
+
+    html += `</div></div>`;
+  }
+
+  body.innerHTML = html;
+}
+
+function pickDateCell(year, month, day) {
+  app.date = new Date(year, month, day);
+  updateDateDisplay();
+  closeDatePicker();
+  showToast(`已选择 ${app.dateText} ${app.weekText}`);
+}
+
+function quickSearch(from, to) {
+  app.fromCity = from;
+  app.toCity = to;
+  document.getElementById('fromCity').textContent = from;
+  document.getElementById('toCity').textContent = to;
+  doSearch();
+}
+
+// === SEARCH ===
+function doSearch() {
+  showPage('page-loading');
+  
+  const typeNames = { plane: '航班', highspeed: '车次', train: '车次' };
+  document.getElementById('loadingText').textContent = `正在搜索${typeNames[app.transportType]}...`;
+  
+  setTimeout(() => {
+    showResultsPage();
+  }, 800 + Math.random() * 600);
+}
+
+// === RESULTS ===
+function showResultsPage() {
+  document.getElementById('resultsTitle').textContent = `${app.fromCity} → ${app.toCity}`;
+  document.getElementById('resultsDate').textContent = `${app.dateText} ${app.weekText}`;
+  
+  renderFilters();
+  renderResults();
+  showPage('page-results');
+}
+
+function renderFilters() {
+  const bar = document.getElementById('filterBar');
+  let filters = [];
+  
+  if (app.transportType === 'plane') {
+    filters = ['推荐排序', '价格低→高', '出发早→晚', '耗时短→长', '仅直飞'];
+  } else {
+    filters = ['推荐排序', '出发早→晚', '耗时短→长', '价格低→高', '只看高铁'];
+  }
+  
+  bar.innerHTML = filters.map((f, i) => 
+    `<div class="filter-chip ${i===0?'active':''}">${f}</div>`
+  ).join('');
+}
+
+function renderResults() {
+  const list = document.getElementById('resultList');
+  const results = generateResults();
+  app.currentResults = results;
+  
+  list.innerHTML = results.map((r, i) => {
+    if (app.transportType === 'plane') {
+      return renderFlightCard(r, i);
+    } else {
+      return renderTrainCard(r, i);
+    }
+  }).join('');
+}
+
+function generateResults() {
+  const count = 8 + Math.floor(Math.random() * 5);
+  const results = [];
+  
+  for (let i = 0; i < count; i++) {
+    if (app.transportType === 'plane') {
+      results.push(generateFlight());
+    } else {
+      results.push(generateTrain());
+    }
+  }
+  
+  return results.sort((a, b) => {
+    const tA = parseInt(a.departTime.replace(':', ''));
+    const tB = parseInt(b.departTime.replace(':', ''));
+    return tA - tB;
+  });
+}
+
+function generateFlight() {
+  const fromDomestic = isDomesticCity(app.fromCity);
+  const toDomestic = isDomesticCity(app.toCity);
+  const isInternational = !(fromDomestic && toDomestic);
+  
+  let airline, prefix, model;
+  if (isInternational) {
+    const idx = Math.floor(Math.random() * flightDB.intlAirlines.length);
+    airline = flightDB.intlAirlines[idx];
+    prefix = flightDB.intlPrefixes[idx];
+    model = flightDB.wideBodyModels[Math.floor(Math.random() * flightDB.wideBodyModels.length)];
+  } else {
+    airline = flightDB.airlines[Math.floor(Math.random() * flightDB.airlines.length)];
+    prefix = ['CA', 'MU', 'CZ', 'HU', 'ZH', 'MF', '3U', '9C', 'HO'][Math.floor(Math.random() * 9)];
+    model = flightDB.planeModels[Math.floor(Math.random() * flightDB.planeModels.length)];
+  }
+  const flightNo = prefix + (1000 + Math.floor(Math.random() * 8000));
+  
+  const hour = 6 + Math.floor(Math.random() * 16);
+  const min = Math.floor(Math.random() * 60);
+  const departTime = `${hour.toString().padStart(2,'0')}:${min.toString().padStart(2,'0')}`;
+  
+  // 国际/洲际航线飞行时长更长
+  let durationH, durationM;
+  if (isInternational) {
+    durationH = 2 + Math.floor(Math.random() * 12); // 2~14小时
+    durationM = Math.floor(Math.random() * 60);
+  } else {
+    durationH = 1 + Math.floor(Math.random() * 4);
+    durationM = Math.floor(Math.random() * 60);
+  }
+  const totalMin = hour * 60 + min + durationH * 60 + durationM;
+  const arrHour = Math.floor(totalMin / 60) % 24;
+  const arrMin = totalMin % 60;
+  const crossDays = Math.floor(totalMin / 60 / 24);
+  const arriveTime = `${arrHour.toString().padStart(2,'0')}:${arrMin.toString().padStart(2,'0')}` + (crossDays > 0 ? `+${crossDays}` : '');
+  
+  // 国际航线基础票价更高
+  const basePrice = isInternational
+    ? 1800 + Math.floor(Math.random() * 8200)
+    : 400 + Math.floor(Math.random() * 2600);
+  const discount = Math.random() > 0.4 ? (Math.floor(Math.random() * 5) + 3) : null;
+  
+  const tags = [];
+  if (Math.random() > 0.6) tags.push({ text: '含餐', type: 'green' });
+  if (isInternational) tags.push({ text: '国际航线', type: 'blue' });
+  else if (Math.random() > 0.7) tags.push({ text: '大飞机', type: 'blue' });
+  if (discount && discount <= 5) tags.push({ text: `${discount}折起`, type: '' });
+  
+  const fromCountry = cityCountryMap[app.fromCity];
+  const toCountry = cityCountryMap[app.toCity];
+  
+  return {
+    type: 'plane',
+    code: flightNo,
+    airline, model,
+    isInternational,
+    fromCity: app.fromCity, toCity: app.toCity,
+    fromCountry, toCountry,
+    departTime, arriveTime,
+    duration: `${durationH}h${durationM}m`,
+    price: basePrice,
+    discount: discount ? `${discount}折` : null,
+    tags,
+    fromStation: app.fromCity + '机场',
+    toStation: app.toCity + '机场',
+  };
+}
+
+function generateTrain() {
+  const cfg = trainDB[app.transportType];
+  const prefix = cfg.prefix[Math.floor(Math.random() * cfg.prefix.length)];
+  const trainNo = prefix + (1 + Math.floor(Math.random() * 9999));
+  
+  const hour = 5 + Math.floor(Math.random() * 18);
+  const min = Math.floor(Math.random() * 60);
+  const departTime = `${hour.toString().padStart(2,'0')}:${min.toString().padStart(2,'0')}`;
+  
+  let durationH, durationM;
+  if (app.transportType === 'highspeed') {
+    durationH = Math.floor(Math.random() * 6) + 1;
+    durationM = Math.floor(Math.random() * 60);
+  } else {
+    durationH = Math.floor(Math.random() * 20) + 4;
+    durationM = Math.floor(Math.random() * 60);
+  }
+  
+  const arrHour = (hour + durationH + Math.floor((min + durationM) / 60)) % 24;
+  const arrMin = (min + durationM) % 60;
+  const arriveTime = `${arrHour.toString().padStart(2,'0')}:${arrMin.toString().padStart(2,'0')}`;
+  const nextDay = (hour + durationH) >= 24;
+  
+  let basePrice;
+  if (app.transportType === 'highspeed') {
+    basePrice = 50 + Math.floor(Math.random() * 800);
+  } else {
+    basePrice = 30 + Math.floor(Math.random() * 400);
+  }
+  
+  const seatType = cfg.seatTypes[0];
+  const seatsLeft = Math.floor(Math.random() * 50);
+  
+  const tags = [];
+  if (seatsLeft < 10) tags.push({ text: `仅剩${seatsLeft}张`, type: '' });
+  if (Math.random() > 0.7) tags.push({ text: '始发', type: 'green' });
+  
+  return {
+    type: app.transportType,
+    code: trainNo,
+    fromCity: app.fromCity, toCity: app.toCity,
+    departTime,
+    arriveTime: arriveTime + (nextDay ? '+1' : ''),
+    duration: `${durationH}h${durationM}m`,
+    price: basePrice,
+    seatType,
+    tags,
+    fromStation: app.fromCity + (app.transportType === 'highspeed' ? '南站' : '站'),
+    toStation: app.toCity + (app.transportType === 'highspeed' ? '南站' : '站'),
+  };
+}
+
+function renderFlightCard(r, index) {
+  return `
+    <div class="flight-card" onclick="selectResult(${index})">
+      <div class="flight-main">
+        <div class="flight-time">
+          <div class="time">${r.departTime}</div>
+          <div class="station">${r.fromStation}</div>
+        </div>
+        <div class="flight-middle">
+          <div class="duration">${r.duration}</div>
+          <div class="line"></div>
+          <div class="type-info">${r.airline} ${r.code} | ${r.model}</div>
+        </div>
+        <div class="flight-time">
+          <div class="time">${r.arriveTime}</div>
+          <div class="station">${r.toStation}</div>
+        </div>
+        <div class="flight-price">
+          <div class="price"><span class="yen">¥</span>${r.price}</div>
+          ${r.discount ? `<div class="discount">${r.discount}</div>` : ''}
+        </div>
+      </div>
+      ${r.tags.length ? `<div class="flight-tags">${r.tags.map(t => `<span class="flight-tag ${t.type}">${t.text}</span>`).join('')}</div>` : ''}
+    </div>
+  `;
+}
+
+function renderTrainCard(r, index) {
+  return `
+    <div class="flight-card" onclick="selectResult(${index})">
+      <div class="train-number">${r.code}</div>
+      <div class="flight-main">
+        <div class="flight-time">
+          <div class="time">${r.departTime}</div>
+          <div class="station">${r.fromStation}</div>
+        </div>
+        <div class="flight-middle">
+          <div class="duration">${r.duration}</div>
+          <div class="line"></div>
+          <div class="type-info">${r.seatType}起</div>
+        </div>
+        <div class="flight-time">
+          <div class="time">${r.arriveTime}</div>
+          <div class="station">${r.toStation}</div>
+        </div>
+        <div class="flight-price">
+          <div class="price"><span class="yen">¥</span>${r.price}</div>
+        </div>
+      </div>
+      ${r.tags.length ? `<div class="flight-tags">${r.tags.map(t => `<span class="flight-tag ${t.type}">${t.text}</span>`).join('')}</div>` : ''}
+    </div>
+  `;
+}
+
+// === SELECT RESULT -> FARE PAGE ===
+function selectResult(index) {
+  app.selectedResult = app.currentResults[index];
+  showFarePage();
+}
+
+function showFarePage() {
+  const r = app.selectedResult;
+  const icon = r.type === 'plane' ? '✈️' : (r.type === 'highspeed' ? '🚄' : '🚂');
+  
+  document.getElementById('fareDate').textContent = `${app.dateText} ${app.weekText}`;
+  
+  document.getElementById('fareSummary').innerHTML = `
+    <div class="fare-summary-top">
+      <span class="icon">${icon}</span>
+      <span class="code">${r.code}${r.airline ? ' · ' + r.airline : ''}</span>
+      <span class="sub">${app.dateText} ${app.weekText}</span>
+    </div>
+    <div class="fare-summary-route">
+      <div>
+        <div class="fs-city">${r.departTime}</div>
+        <div>${r.fromCity} ${r.fromStation}</div>
+      </div>
+      <div class="fs-mid">${r.duration}<br>→</div>
+      <div style="text-align:right">
+        <div class="fs-city">${r.arriveTime.replace('+1','')}</div>
+        <div>${r.toCity} ${r.toStation}</div>
+      </div>
+    </div>
+  `;
+  
+  app.currentFareOptions = generateFareOptions(r);
+  renderFareList();
+  showPage('page-fare');
+}
+
+function generateFareOptions(r) {
+  const P = r.price;
+  if (r.type === 'plane') {
+    return [
+      { name: '特惠经济舱', tag: '限时特惠', price: Math.round(P * 0.78), baggage: '不含免费行李额', meal: '无餐食', rule: '不可改签 · 不可退票', recommended: false },
+      { name: '经济舱', tag: null, price: P, baggage: '20kg免费行李额', meal: '含正餐', rule: '改签收费 · 退票收取20%手续费', recommended: true },
+      { name: '经济灵活舱', tag: '灵活退改', price: Math.round(P * 1.32), baggage: '2件×23kg免费行李额', meal: '含正餐+加点', rule: '免费改签1次 · 退票收取10%手续费', recommended: false },
+      { name: '公务舱', tag: '尊享服务', price: Math.round(P * 2.6), baggage: '2件×32kg免费行李额', meal: '精选餐食+贵宾休息室', rule: '免费改签 · 免费退票', recommended: false },
+    ];
+  } else {
+    const isHigh = r.type === 'highspeed';
+    const seatNames = isHigh ? ['二等座', '一等座', '商务座'] : ['硬座', '硬卧', '软卧'];
+    const multipliers = isHigh ? [1, 1.7, 3.4] : [1, 1.8, 2.6];
+    return seatNames.map((name, i) => ({
+      name,
+      tag: i === 0 ? '推荐' : null,
+      price: Math.round(P * multipliers[i]),
+      baggage: null,
+      meal: null,
+      remain: Math.max(3, Math.floor(Math.random() * 80)),
+      rule: '开车前收取手续费改签/退票 · 开车后不可退改',
+      recommended: i === 0,
+    }));
+  }
+}
+
+function renderFareList() {
+  const list = document.getElementById('fareList');
+  list.innerHTML = app.currentFareOptions.map((f, i) => {
+    let rows = '';
+    if (f.baggage !== null || f.meal !== null) {
+      rows += `<div class="fare-info-row"><span class="fi-icon">🧳</span><span>${f.baggage}</span></div>`;
+      rows += `<div class="fare-info-row"><span class="fi-icon">🍽️</span><span>${f.meal}</span></div>`;
+    } else {
+      rows += `<div class="fare-info-row"><span class="fi-icon">💺</span><span>剩余${f.remain}张</span></div>`;
+    }
+    rows += `<div class="fare-info-row"><span class="fi-icon">🔄</span><span>${f.rule}</span></div>`;
+    
+    return `
+      <div class="fare-card ${f.recommended ? 'recommended' : ''}">
+        <div class="fare-top">
+          <div class="fare-name">${f.name} ${f.tag ? `<span class="fare-tag">${f.tag}</span>` : ''}</div>
+          <div class="fare-price"><span class="yen">¥</span>${f.price}</div>
+        </div>
+        ${rows}
+        <button class="fare-select-btn" onclick="selectFare(${i})">选择该档位</button>
+      </div>
+    `;
+  }).join('');
+}
+
+function selectFare(index) {
+  app.selectedFare = app.currentFareOptions[index];
+  showPayPage();
+}
+
+// === PAY PAGE ===
+function showPayPage() {
+  const r = app.selectedResult;
+  const f = app.selectedFare;
+  const icon = r.type === 'plane' ? '✈️' : (r.type === 'highspeed' ? '🚄' : '🚂');
+  
+  document.getElementById('payDate').textContent = `${app.dateText} ${app.weekText}`;
+  
+  document.getElementById('paySummaryCard').innerHTML = `
+    <div class="pay-row"><span>${icon} 行程</span><span class="val">${r.fromCity} → ${r.toCity}</span></div>
+    <div class="pay-row"><span>出发时间</span><span class="val">${app.dateText} ${r.departTime}</span></div>
+    <div class="pay-row"><span>车次/航班</span><span class="val">${r.code}${r.airline ? ' ' + r.airline : ''}</span></div>
+    <div class="pay-row"><span>票价档位</span><span class="val">${f.name}</span></div>
+    <div class="pay-row"><span>乘客</span><span class="val">旅客 (成人) ×1</span></div>
+    <div class="pay-row total"><span>合计</span><span class="val">¥${f.price}</span></div>
+  `;
+  
+  app.selectedPayMethod = 'wechat';
+  renderPayMethods();
+  
+  document.getElementById('payFooterAmount').textContent = `¥${f.price}`;
+  
+  showPage('page-pay');
+}
+
+function renderPayMethods() {
+  const list = document.getElementById('payMethodList');
+  list.innerHTML = payMethods.map(m => `
+    <div class="pay-method ${app.selectedPayMethod === m.key ? 'selected' : ''}" onclick="selectPayMethod('${m.key}')">
+      <span class="pm-icon">${m.icon}</span>
+      <span class="pm-name">${m.name}</span>
+      <span class="pm-radio"></span>
+    </div>
+  `).join('');
+}
+
+function selectPayMethod(key) {
+  app.selectedPayMethod = key;
+  renderPayMethods();
+}
+
+// === PASSWORD MODAL ===
+function openPasswordModal() {
+  app.pwdDigits = '';
+  updatePwdDots();
+  document.getElementById('pwdAmount').textContent = app.selectedFare.price;
+  document.getElementById('pwdPayee').textContent = `支付给 出行助手`;
+  document.getElementById('pwdInputArea').style.display = 'block';
+  document.getElementById('pwdProcessing').classList.remove('show');
+  document.getElementById('pwdOverlay').classList.add('active');
+  
+  const input = document.getElementById('pwdHiddenInput');
+  input.value = '';
+  setTimeout(() => input.focus(), 100);
+}
+
+function closePasswordModal() {
+  document.getElementById('pwdOverlay').classList.remove('active');
+  document.getElementById('pwdHiddenInput').blur();
+}
+
+function handlePwdInput(e) {
+  const digits = e.target.value.replace(/\D/g, '').slice(0, 6);
+  e.target.value = digits;
+  app.pwdDigits = digits;
+  updatePwdDots();
+  
+  if (digits.length === 6) {
+    processPayment();
+  }
+}
+
+function updatePwdDots() {
+  const boxes = document.querySelectorAll('#pwdDots .pwd-dot-box');
+  boxes.forEach((box, i) => {
+    if (i < app.pwdDigits.length) {
+      box.classList.add('filled');
+    } else {
+      box.classList.remove('filled');
+    }
+  });
+}
+
+function processPayment() {
+  document.getElementById('pwdInputArea').style.display = 'none';
+  document.getElementById('pwdProcessing').classList.add('show');
+  document.getElementById('pwdHiddenInput').blur();
+  
+  setTimeout(() => {
+    closePasswordModal();
+    finalizePurchase();
+  }, 900 + Math.random() * 400);
+}
+
+// === FINALIZE PURCHASE ===
+function finalizePurchase() {
+  const r = app.selectedResult;
+  const f = app.selectedFare;
+  const methodNames = { wechat: '微信支付', alipay: '支付宝', unionpay: '银联卡支付' };
+  
+  const order = {
+    id: Date.now(),
+    type: r.type,
+    code: r.code,
+    airline: r.airline || null,
+    model: r.model || null,
+    fromCity: r.fromCity,
+    toCity: r.toCity,
+    fromStation: r.fromStation,
+    toStation: r.toStation,
+    departTime: r.departTime,
+    arriveTime: r.arriveTime,
+    duration: r.duration,
+    dateText: app.dateText,
+    weekText: app.weekText,
+    fareName: f.name,
+    price: f.price,
+    baggage: f.baggage,
+    meal: f.meal,
+    rule: f.rule,
+    payMethod: methodNames[app.selectedPayMethod],
+    orderNo: generateOrderNo(),
+    payTimeText: formatNow(),
+  };
+  
+  app.currentOrder = order;
+  saveOrder(order);
+  
+  showSuccessPage(order);
+  fireConfetti();
+}
+
+function formatNow() {
+  const d = new Date();
+  return `${d.getMonth()+1}月${d.getDate()}日 ${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}`;
+}
+
+function generateOrderNo() {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let result = '';
+  for (let i = 0; i < 12; i++) result += chars[Math.floor(Math.random() * chars.length)];
+  return result;
+}
+
+// === ORDER STORAGE ===
+function loadOrders() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveOrder(order) {
+  const orders = loadOrders();
+  orders.unshift(order);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(orders));
+  updateTripsBadge();
+}
+
+function updateTripsBadge() {
+  const orders = loadOrders();
+  const badge = document.getElementById('tripsBadge');
+  if (orders.length > 0) {
+    badge.textContent = orders.length;
+    badge.style.display = 'inline-block';
+  } else {
+    badge.style.display = 'none';
+  }
+}
+
+// === ORDER CARD RENDERING (shared by success + detail) ===
+function renderOrderCardHTML(order) {
+  const icon = order.type === 'plane' ? '✈️' : (order.type === 'highspeed' ? '🚄' : '🚂');
+  
+  let extraRows = '';
+  if (order.baggage) extraRows += `<div class="order-detail-row"><span class="label">行李额</span><span class="value">${order.baggage}</span></div>`;
+  if (order.meal) extraRows += `<div class="order-detail-row"><span class="label">餐食</span><span class="value">${order.meal}</span></div>`;
+  
+  return `
+    <div class="order-card-header">
+      <div class="icon">${icon}</div>
+      <div class="info">
+        <div class="code">${order.code}${order.airline ? ' ' + order.airline : ''}</div>
+        <div class="date">${order.dateText} ${order.weekText}</div>
+      </div>
+      <div class="status-badge">已支付</div>
+    </div>
+    <div class="order-route">
+      <div class="order-city">
+        <div class="time">${order.departTime}</div>
+        <div class="name">${order.fromCity}</div>
+        <div class="station">${order.fromStation}</div>
+      </div>
+      <div class="order-arrow">
+        <div class="duration">${order.duration}</div>
+        <div class="arrow-line"></div>
+      </div>
+      <div class="order-city">
+        <div class="time">${order.arriveTime.replace('+1','')}</div>
+        <div class="name">${order.toCity}</div>
+        <div class="station">${order.toStation}</div>
+      </div>
+    </div>
+    <div class="order-details">
+      <div class="order-detail-row"><span class="label">票价档位</span><span class="value">${order.fareName}</span></div>
+      ${extraRows}
+      <div class="order-detail-row"><span class="label">乘客</span><span class="value">旅客 (成人)</span></div>
+      <div class="order-detail-row"><span class="label">支付方式</span><span class="value">${order.payMethod}</span></div>
+      <div class="order-detail-row"><span class="label">订单号</span><span class="value">${order.orderNo}</span></div>
+      <div class="order-detail-row"><span class="label">支付时间</span><span class="value">${order.payTimeText}</span></div>
+    </div>
+    <div class="order-price-row">
+      <span class="label">实付金额</span>
+      <span class="price"><span class="yen">¥</span>${order.price}</span>
+    </div>
+  `;
+}
+
+function showSuccessPage(order) {
+  document.getElementById('orderCard').innerHTML = renderOrderCardHTML(order);
+  showPage('page-success');
+}
+
+// === MY TRIPS ===
+function openMyTrips() {
+  renderMyTrips();
+  showPage('page-my-trips');
+}
+
+function renderMyTrips() {
+  const orders = loadOrders();
+  
+  const totalOrders = orders.length;
+  const totalSpent = orders.reduce((sum, o) => sum + o.price, 0);
+  
+  document.getElementById('tripsStats').innerHTML = `
+    <div class="stat"><div class="num">${totalOrders}</div><div class="lbl">累计订单</div></div>
+    <div class="stat"><div class="num">¥${totalSpent.toLocaleString()}</div><div class="lbl">累计金额</div></div>
+  `;
+  
+  const list = document.getElementById('tripsList');
+  
+  if (orders.length === 0) {
+    list.innerHTML = `
+      <div class="trips-empty">
+        <div class="big">🎫</div>
+        <div>暂无行程，去首页搜索出行吧</div>
+      </div>
+    `;
+    return;
+  }
+  
+  list.innerHTML = orders.map(o => {
+    const icon = o.type === 'plane' ? '✈️' : (o.type === 'highspeed' ? '🚄' : '🚂');
+    return `
+      <div class="trip-item" onclick="openTripDetail(${o.id})">
+        <div class="trip-item-top">
+          <div class="route">${icon} ${o.fromCity} → ${o.toCity}</div>
+          <div class="price">¥${o.price}</div>
+        </div>
+        <div class="trip-item-meta">
+          <span>${o.dateText} ${o.departTime} · ${o.code} · ${o.fareName}</span>
+          <span class="trip-item-status">已支付</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function openTripDetail(id) {
+  const orders = loadOrders();
+  const order = orders.find(o => o.id === id);
+  if (!order) return;
+  
+  app.currentOrder = order;
+  document.getElementById('tripDetailCard').innerHTML = renderOrderCardHTML(order);
+  showPage('page-trip-detail');
+}
+
+function deleteCurrentTrip() {
+  if (!app.currentOrder) return;
+  const orders = loadOrders().filter(o => o.id !== app.currentOrder.id);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(orders));
+  updateTripsBadge();
+  showToast('订单已删除');
+  openMyTrips();
+}
+
+// === SHARE IMAGE ===
+// 支持两种模板：boarding(拟真机票) / quit(到此为止·吐槽风)
+
+const shareLinePools = {
+  quit: [
+    '这个班，就上到这里了。',
+    '该死的班，终于不用上了。',
+    '这个学，就上到这里了。',
+    '工位是租的，自由是我的。',
+    '钱没挣够，但命保住了。',
+    '感谢公司，让我提前认清人生。',
+    '此去经年，再也不用早八。',
+    '打卡机，再见了朋友。',
+    '这份班，我干到头了。',
+    '离职不是逃跑，是战略转移。',
+    '再见旧工位，你好新世界。',
+    '不是我卷不动，是它不值得。',
+  ],
+};
+
+function selectShareTemplate(tpl) {
+  app.shareTemplate = tpl;
+  app.shareLineIndex = Math.floor(Math.random() * 100);
+  document.querySelectorAll('.share-tpl-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.tpl === tpl);
+  });
+  const shuffleBtn = document.getElementById('shareShuffleBtn');
+  if (shuffleBtn) shuffleBtn.style.display = tpl === 'boarding' ? 'none' : '';
+  renderShareCanvas();
+}
+
+function shuffleShareLine() {
+  app.shareLineIndex++;
+  renderShareCanvas();
+}
+
+function generateShareImage() {
+  document.getElementById('shareModal').classList.add('active');
+  selectShareTemplate(app.shareTemplate || 'boarding');
+}
+
+function renderShareCanvas() {
+  const canvas = document.getElementById('shareCanvas');
+  const ctx = canvas.getContext('2d');
+  const order = app.currentOrder;
+  if (!order) return;
+
+  if (app.shareTemplate === 'quit') {
+    drawQuitTemplate(ctx, canvas, order);
+  } else {
+    drawBoardingPassTemplate(ctx, canvas, order);
+  }
+}
+
+// ---------- 模板一：拟真机票（天空渐变背景 + 登机牌撕票造型 + 大字三字码 + 条形码） ----------
+function drawBoardingPassTemplate(ctx, canvas, order) {
+  const W = 640, H = 1040;
+  canvas.width = W;
+  canvas.height = H;
+  const isPlane = order.type === 'plane';
+
+  // ---------- 天空背景 ----------
+  drawSkyBackground(ctx, W, H);
+
+  // ---------- 顶部品牌 + 大标题 ----------
+  ctx.textAlign = 'center';
+  ctx.fillStyle = 'rgba(255,255,255,0.85)';
+  ctx.font = '600 13px PingFang SC, sans-serif';
+  ctx.fillText('✈  我 的 行 程 单', W / 2, 36);
+
+  ctx.fillStyle = '#ffffff';
+  ctx.font = '700 32px PingFang SC, sans-serif';
+  ctx.shadowColor = 'rgba(0,40,90,0.3)';
+  ctx.shadowBlur = 8;
+  ctx.shadowOffsetY = 3;
+  ctx.fillText(`${order.fromCity}  →  ${order.toCity}`, W / 2, 86);
+  ctx.shadowColor = 'transparent';
+
+  // ---------- 卡片布局常量（按内容累加高度，避免溢出/留白） ----------
+  const cardX = 40, cardW = W - 80, cardY = 150;
+  const PHOTO_H = 230, PAD1 = 36, CODEROW_H = 34, ROUTE_H = 118, GAP1 = 34, ROW_H = 34;
+  const detailRows = [
+    ['票价档位', order.fareName],
+    ['支付方式', order.payMethod],
+    ['订单号', order.orderNo],
+    ['支付时间', order.payTimeText],
+  ];
+  const GAP2 = 34, PRICE_H = 100, BARCODE_H = 66, BOTTOM_PAD = 24;
+  const detailsH = ROW_H * detailRows.length;
+  const cardH = PHOTO_H + PAD1 + CODEROW_H + ROUTE_H + GAP1 + detailsH + GAP2 + PRICE_H + BARCODE_H + BOTTOM_PAD;
+  const midX = cardX + cardW / 2;
+
+  // ---------- 卡片白底 + 阴影 ----------
+  ctx.save();
+  ctx.shadowColor = 'rgba(10,40,90,0.25)';
+  ctx.shadowBlur = 30;
+  ctx.shadowOffsetY = 14;
+  ctx.fillStyle = '#ffffff';
+  roundRect(ctx, cardX, cardY, cardW, cardH, 26);
+  ctx.fill();
+  ctx.restore();
+
+  // ---------- 顶部图形区（裁剪到卡片圆角内） ----------
+  ctx.save();
+  roundRect(ctx, cardX, cardY, cardW, cardH, 26);
+  ctx.clip();
+
+  const photoGrad = ctx.createLinearGradient(cardX, cardY, cardX, cardY + PHOTO_H);
+  photoGrad.addColorStop(0, '#8ecdf5');
+  photoGrad.addColorStop(1, '#5aa8e8');
+  ctx.fillStyle = photoGrad;
+  ctx.fillRect(cardX, cardY, cardW, PHOTO_H);
+
+  drawCloud(ctx, cardX + 60, cardY + 55, 1.1, 0.5);
+  drawCloud(ctx, cardX + cardW - 90, cardY + 40, 0.8, 0.4);
+  drawCloud(ctx, cardX + cardW - 160, cardY + 155, 1.3, 0.32);
+  drawCloud(ctx, cardX + 120, cardY + 175, 0.9, 0.3);
+
+  if (isPlane) {
+    drawPlaneIcon(ctx, cardX + cardW / 2, cardY + PHOTO_H / 2, 130, 'rgba(255,255,255,0.95)', -25);
+  } else {
+    drawTrainIcon(ctx, cardX + cardW / 2, cardY + PHOTO_H / 2, 150, 'rgba(255,255,255,0.95)');
+  }
+
+  // 左上角状态徽标
+  ctx.font = '600 12px PingFang SC, sans-serif';
+  const pillText = '已 支 付';
+  const pillW = ctx.measureText(pillText).width + 24;
+  ctx.fillStyle = 'rgba(255,255,255,0.92)';
+  roundRect(ctx, cardX + 20, cardY + 18, pillW, 26, 13);
+  ctx.fill();
+  ctx.fillStyle = '#0d8a4f';
+  ctx.textAlign = 'left';
+  ctx.fillText(pillText, cardX + 32, cardY + 35);
+
+  // 右上角品牌
+  ctx.textAlign = 'right';
+  ctx.fillStyle = 'rgba(255,255,255,0.92)';
+  ctx.font = '700 14px PingFang SC, sans-serif';
+  ctx.fillText('出行助手', cardX + cardW - 20, cardY + 34);
+
+  ctx.restore();
+
+  // ---------- 登机牌撕票缺口 ----------
+  const notchY = cardY + PHOTO_H;
+  ctx.save();
+  ctx.globalCompositeOperation = 'destination-out';
+  ctx.beginPath(); ctx.arc(cardX, notchY, 16, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(cardX + cardW, notchY, 16, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+
+  drawDashedLine(ctx, cardX + 26, cardX + cardW - 26, notchY);
+
+  // ---------- 车次/航班号 + 日期 ----------
+  let y = notchY + PAD1;
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#333';
+  ctx.font = '700 15px PingFang SC, sans-serif';
+  ctx.fillText(`${order.code}${order.airline ? '  ' + order.airline : ''}`, cardX + 28, y);
+  ctx.textAlign = 'right';
+  ctx.fillStyle = '#999';
+  ctx.font = '13px PingFang SC, sans-serif';
+  ctx.fillText(`${order.dateText} ${order.weekText}`, cardX + cardW - 28, y);
+
+  // ---------- 大号机场/站点三字码 ----------
+  y += CODEROW_H + 10;
+  const fromCode = getCityCode(order.fromCity);
+  const toCode = getCityCode(order.toCity);
+
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#1a1a1a';
+  ctx.font = '800 46px Arial, sans-serif';
+  ctx.fillText(fromCode, cardX + 28, y + 40);
+  ctx.font = '500 14px PingFang SC, sans-serif';
+  ctx.fillStyle = '#666';
+  ctx.fillText(order.fromCity, cardX + 28, y + 64);
+
+  ctx.textAlign = 'right';
+  ctx.font = '800 46px Arial, sans-serif';
+  ctx.fillStyle = '#1a1a1a';
+  ctx.fillText(toCode, cardX + cardW - 28, y + 40);
+  ctx.font = '500 14px PingFang SC, sans-serif';
+  ctx.fillStyle = '#666';
+  ctx.fillText(order.toCity, cardX + cardW - 28, y + 64);
+
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#aaa';
+  ctx.font = '12px PingFang SC, sans-serif';
+  ctx.fillText(order.duration, midX, y + 4);
+
+  ctx.strokeStyle = '#ddd';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(cardX + 150, y + 16);
+  ctx.lineTo(midX - 22, y + 16);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(midX + 22, y + 16);
+  ctx.lineTo(cardX + cardW - 150, y + 16);
+  ctx.stroke();
+
+  if (isPlane) {
+    drawPlaneIcon(ctx, midX, y + 16, 34, '#1a73e8', 90);
+  } else {
+    drawTrainIcon(ctx, midX, y + 16, 40, '#1a73e8');
+  }
+
+  y += ROUTE_H;
+
+  // ---------- 分隔虚线 ----------
+  drawDashedLine(ctx, cardX + 24, cardX + cardW - 24, y);
+  y += GAP1;
+
+  // ---------- 详情行 ----------
+  detailRows.forEach(([label, value]) => {
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#999';
+    ctx.font = '14px PingFang SC, sans-serif';
+    ctx.fillText(label, cardX + 28, y + 16);
+    ctx.textAlign = 'right';
+    ctx.fillStyle = '#333';
+    ctx.font = '500 14px PingFang SC, sans-serif';
+    ctx.fillText(String(value), cardX + cardW - 28, y + 16);
+    y += ROW_H;
+  });
+
+  // ---------- 分隔虚线 ----------
+  drawDashedLine(ctx, cardX + 24, cardX + cardW - 24, y);
+  y += GAP2;
+
+  // ---------- 价格 + 出票印章 ----------
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#ff6a00';
+  ctx.font = '800 42px PingFang SC, sans-serif';
+  ctx.fillText(`¥${order.price}`, midX, y + 46);
+  ctx.fillStyle = '#999';
+  ctx.font = '12px PingFang SC, sans-serif';
+  ctx.fillText('实付金额', midX, y + 70);
+
+  ctx.save();
+  ctx.translate(cardX + cardW - 90, y + 40);
+  ctx.rotate(-0.22);
+  ctx.strokeStyle = 'rgba(0,181,120,0.75)';
+  ctx.lineWidth = 2.5;
+  roundRect(ctx, -42, -17, 84, 34, 5);
+  ctx.stroke();
+  ctx.fillStyle = 'rgba(0,181,120,0.85)';
+  ctx.font = '700 17px PingFang SC, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('已出票', 0, 6);
+  ctx.restore();
+
+  y += PRICE_H;
+
+  // ---------- 条形码 ----------
+  drawBarcode(ctx, cardX + 28, y, cardW - 56, 40, order.orderNo);
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#bbb';
+  ctx.font = '11px Arial, sans-serif';
+  ctx.fillText(order.orderNo, midX, y + 58);
+
+  // ---------- 底部落款 ----------
+  ctx.textAlign = 'center';
+  ctx.fillStyle = 'rgba(255,255,255,0.65)';
+  ctx.font = '12px PingFang SC, sans-serif';
+  ctx.fillText('🎫 出行助手 · Where Next?', W / 2, cardY + cardH + 34);
+}
+
+// ---------- 模板二：到此为止（吐槽风·登机牌撕碎版，深色背景+荧光撕痕+盖章"退出中"） ----------
+function drawQuitTemplate(ctx, canvas, order) {
+  const W = 640, H = 1000;
+  canvas.width = W;
+  canvas.height = H;
+  const isPlane = order.type === 'plane';
+  const line = shareLinePools.quit[app.shareLineIndex % shareLinePools.quit.length];
+
+  // 深色渐变背景（有种"熄灯下班"的既视感）
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#1c1f2b');
+  bg.addColorStop(0.55, '#2a2f42');
+  bg.addColorStop(1, '#151720');
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, W, H);
+
+  // 背景网格纹理（模拟工位屏幕感）
+  ctx.save();
+  ctx.globalAlpha = 0.05;
+  ctx.strokeStyle = '#ffffff';
+  ctx.lineWidth = 1;
+  for (let gx = 0; gx <= W; gx += 40) {
+    ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke();
+  }
+  for (let gy = 0; gy <= H; gy += 40) {
+    ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke();
+  }
+  ctx.restore();
+
+  // 顶部小字
+  ctx.textAlign = 'center';
+  ctx.fillStyle = 'rgba(255,255,255,0.5)';
+  ctx.font = '600 13px PingFang SC, sans-serif';
+  ctx.fillText('E X I T   T I C K E T', W / 2, 56);
+
+  // 大标题金句
+  ctx.font = '800 34px PingFang SC, sans-serif';
+  ctx.fillStyle = '#ffd166';
+  wrapCenterText(ctx, line, W / 2, 108, W - 100, 42);
+
+  // 登机牌卡片
+  const cardX = 50, cardW = W - 100, cardY = 210, cardH = 560;
+  ctx.save();
+  ctx.shadowColor = 'rgba(0,0,0,0.4)';
+  ctx.shadowBlur = 34;
+  ctx.shadowOffsetY = 16;
+  ctx.fillStyle = '#22252f';
+  roundRect(ctx, cardX, cardY, cardW, cardH, 22);
+  ctx.fill();
+  ctx.restore();
+
+  // 卡片描边荧光
+  ctx.strokeStyle = 'rgba(255,209,102,0.4)';
+  ctx.lineWidth = 1.5;
+  roundRect(ctx, cardX, cardY, cardW, cardH, 22);
+  ctx.stroke();
+
+  const midX = cardX + cardW / 2;
+  let y = cardY + 44;
+
+  // 顶部：撤退/退出图标条
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#ffd166';
+  ctx.font = '700 15px PingFang SC, sans-serif';
+  ctx.fillText('🚪 已办理离场手续', cardX + 30, y);
+  ctx.textAlign = 'right';
+  ctx.fillStyle = 'rgba(255,255,255,0.45)';
+  ctx.font = '13px PingFang SC, sans-serif';
+  ctx.fillText(`${order.dateText} ${order.weekText}`, cardX + cardW - 30, y);
+
+  y += 44;
+  drawDashedLineColor(ctx, cardX + 26, cardX + cardW - 26, y, 'rgba(255,255,255,0.15)');
+  y += 50;
+
+  // 起点 → 终点：用"工位/牛马"→"自由"的梗
+  const fromLabel = order.fromCity;
+  const toLabel = order.toCity;
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#ffffff';
+  ctx.font = '800 30px PingFang SC, sans-serif';
+  ctx.fillText(fromLabel, cardX + 30, y);
+  ctx.font = '12px PingFang SC, sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.4)';
+  ctx.fillText('原地', cardX + 30, y + 22);
+
+  ctx.textAlign = 'right';
+  ctx.font = '800 30px PingFang SC, sans-serif';
+  ctx.fillStyle = '#ffd166';
+  ctx.fillText(toLabel, cardX + cardW - 30, y);
+  ctx.font = '12px PingFang SC, sans-serif';
+  ctx.fillStyle = 'rgba(255,209,102,0.7)';
+  ctx.textAlign = 'right';
+  ctx.fillText('远方', cardX + cardW - 30, y + 22);
+
+  ctx.textAlign = 'center';
+  ctx.font = '20px sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.5)';
+  ctx.fillText('✂️', midX, y - 5);
+
+  y += 60;
+  drawDashedLineColor(ctx, cardX + 26, cardX + cardW - 26, y, 'rgba(255,255,255,0.15)');
+  y += 44;
+
+  const quitDetails = [
+    ['坚持时长', order.duration],
+    ['工位/座位', order.fareName],
+    ['离职原因', '不想说'],
+    ['心情状态', '爽'],
+    ['单号', order.orderNo],
+  ];
+  quitDetails.forEach(([label, value]) => {
+    ctx.textAlign = 'left';
+    ctx.fillStyle = 'rgba(255,255,255,0.45)';
+    ctx.font = '14px PingFang SC, sans-serif';
+    ctx.fillText(label, cardX + 30, y);
+    ctx.textAlign = 'right';
+    ctx.fillStyle = 'rgba(255,255,255,0.9)';
+    ctx.font = '500 14px PingFang SC, sans-serif';
+    ctx.fillText(String(value), cardX + cardW - 30, y);
+    y += 34;
+  });
+
+  y += 10;
+  drawDashedLineColor(ctx, cardX + 26, cardX + cardW - 26, y, 'rgba(255,255,255,0.15)');
+  y += 46;
+
+  // 大号"已离场"印章
+  ctx.save();
+  ctx.translate(midX, y + 4);
+  ctx.rotate(-0.15);
+  ctx.strokeStyle = 'rgba(255,90,90,0.85)';
+  ctx.lineWidth = 3.5;
+  roundRect(ctx, -100, -26, 200, 52, 8);
+  ctx.stroke();
+  ctx.fillStyle = 'rgba(255,90,90,0.9)';
+  ctx.font = '800 24px PingFang SC, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('已 离 场', 0, 9);
+  ctx.restore();
+
+  ctx.textAlign = 'center';
+  ctx.fillStyle = 'rgba(255,255,255,0.35)';
+  ctx.font = '12px PingFang SC, sans-serif';
+  ctx.fillText('🎫 出行助手 · 这一票，买给自由', W / 2, cardY + cardH + 40);
+}
+
+// 居中自动换行文本（用于金句标题）
+function wrapCenterText(ctx, text, cx, y, maxWidth, lineHeight) {
+  ctx.save();
+  ctx.textAlign = 'center';
+  const chars = String(text).split('');
+  let line = '';
+  const lines = [];
+  chars.forEach(ch => {
+    const test = line + ch;
+    if (ctx.measureText(test).width > maxWidth && line) {
+      lines.push(line);
+      line = ch;
+    } else {
+      line = test;
+    }
+  });
+  if (line) lines.push(line);
+  lines.forEach((ln, i) => {
+    ctx.fillText(ln, cx, y + i * lineHeight);
+  });
+  ctx.restore();
+}
+
+function drawDashedLineColor(ctx, x1, x2, y, color) {
+  ctx.save();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 1.5;
+  ctx.setLineDash([5, 5]);
+  ctx.beginPath();
+  ctx.moveTo(x1, y);
+  ctx.lineTo(x2, y);
+  ctx.stroke();
+  ctx.restore();
+}
+
+// ---------- 分享图绘制辅助函数 ----------
+function drawSkyBackground(ctx, W, H) {
+  const grad = ctx.createLinearGradient(0, 0, 0, H);
+  grad.addColorStop(0, '#9ed4f7');
+  grad.addColorStop(0.35, '#6fb8ec');
+  grad.addColorStop(1, '#2f7dc9');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+
+  drawCloud(ctx, 80, 112, 1.6, 0.18);
+  drawCloud(ctx, W - 100, 62, 1.3, 0.16);
+  drawCloud(ctx, W - 60, H - 60, 1.8, 0.12);
+  drawCloud(ctx, 50, H - 100, 1.4, 0.12);
+}
+
+function drawCloud(ctx, cx, cy, scale, alpha) {
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.fillStyle = '#ffffff';
+  const s = scale;
+  ctx.beginPath();
+  ctx.arc(cx, cy, 20 * s, 0, Math.PI * 2);
+  ctx.arc(cx + 22 * s, cy - 10 * s, 26 * s, 0, Math.PI * 2);
+  ctx.arc(cx + 48 * s, cy, 22 * s, 0, Math.PI * 2);
+  ctx.arc(cx + 20 * s, cy + 10 * s, 24 * s, 0, Math.PI * 2);
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+
+// 经典机票/航班图标（矢量路径），rotationDeg 控制朝向
+function drawPlaneIcon(ctx, cx, cy, size, color, rotationDeg) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.rotate((rotationDeg || 0) * Math.PI / 180);
+  ctx.fillStyle = color;
+  const s = size / 100;
+  ctx.beginPath();
+  ctx.moveTo(0 * s, -50 * s);
+  ctx.lineTo(7 * s, -30 * s);
+  ctx.lineTo(7 * s, -6 * s);
+  ctx.lineTo(46 * s, 18 * s);
+  ctx.lineTo(46 * s, 29 * s);
+  ctx.lineTo(8 * s, 16 * s);
+  ctx.lineTo(8 * s, 40 * s);
+  ctx.lineTo(19 * s, 51 * s);
+  ctx.lineTo(19 * s, 59 * s);
+  ctx.lineTo(0 * s, 50 * s);
+  ctx.lineTo(-19 * s, 59 * s);
+  ctx.lineTo(-19 * s, 51 * s);
+  ctx.lineTo(-8 * s, 40 * s);
+  ctx.lineTo(-8 * s, 16 * s);
+  ctx.lineTo(-46 * s, 29 * s);
+  ctx.lineTo(-46 * s, 18 * s);
+  ctx.lineTo(-7 * s, -6 * s);
+  ctx.lineTo(-7 * s, -30 * s);
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+
+// 简化高铁/火车矢量图标（车头朝右）
+function drawTrainIcon(ctx, cx, cy, size, color) {
+  ctx.save();
+  ctx.translate(cx, cy);
+  const s = size / 100;
+  ctx.fillStyle = color;
+  roundRect(ctx, -50 * s, -22 * s, 88 * s, 44 * s, 16 * s);
+  ctx.fill();
+  ctx.beginPath();
+  ctx.moveTo(38 * s, -22 * s);
+  ctx.quadraticCurveTo(58 * s, 0, 38 * s, 22 * s);
+  ctx.closePath();
+  ctx.fill();
+  ctx.fillStyle = 'rgba(20,40,70,0.35)';
+  for (let i = 0; i < 3; i++) {
+    roundRect(ctx, (-36 + i * 26) * s, -10 * s, 16 * s, 14 * s, 3 * s);
+    ctx.fill();
+  }
+  ctx.fillStyle = color;
+  ctx.beginPath(); ctx.arc(-22 * s, 26 * s, 7 * s, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(20 * s, 26 * s, 7 * s, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+}
+
+function drawDashedLine(ctx, x1, x2, y) {
+  ctx.save();
+  ctx.strokeStyle = '#e3e7eb';
+  ctx.lineWidth = 1.5;
+  ctx.setLineDash([5, 5]);
+  ctx.beginPath();
+  ctx.moveTo(x1, y);
+  ctx.lineTo(x2, y);
+  ctx.stroke();
+  ctx.restore();
+}
+
+// 基于订单号生成一段稳定但看起来随机的条形码
+function drawBarcode(ctx, x, y, w, h, seed) {
+  ctx.save();
+  ctx.fillStyle = '#1a1a1a';
+  const str = String(seed || 'ORDER0000000');
+  let cursor = x;
+  let i = 0;
+  while (cursor < x + w - 2) {
+    const code = str.charCodeAt(i % str.length) + i * 7;
+    const barW = 2 + (code % 4);
+    if (code % 5 !== 0) {
+      ctx.fillRect(cursor, y, barW, h);
+    }
+    cursor += barW + 2 + (code % 3);
+    i++;
+  }
+  ctx.restore();
+}
+
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+function saveShareImage() {
+  const canvas = document.getElementById('shareCanvas');
+  const link = document.createElement('a');
+  const order = app.currentOrder;
+  link.download = `行程_${order.fromCity}_${order.toCity}_${Date.now()}.png`;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+  showToast('图片已保存');
+}
+
+function closeShareModal() {
+  document.getElementById('shareModal').classList.remove('active');
+}
+
+// === NAVIGATION ===
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// === EFFECTS ===
+function fireConfetti() {
+  const container = document.getElementById('confettiContainer');
+  const colors = ['#ff1744', '#ffd700', '#00c853', '#2979ff', '#ff6ec7', '#7c4dff', '#ff9100'];
+  
+  for (let i = 0; i < 30; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = Math.random() * 100 + '%';
+    piece.style.top = '-10px';
+    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    piece.style.width = (Math.random() * 8 + 5) + 'px';
+    piece.style.height = (Math.random() * 8 + 5) + 'px';
+    piece.style.animationDuration = (1.5 + Math.random() * 1.5) + 's';
+    piece.style.animationDelay = (Math.random() * 0.5) + 's';
+    container.appendChild(piece);
+    setTimeout(() => piece.remove(), 3000);
+  }
+}
+
+function showToast(text) {
+  const toast = document.getElementById('appToast');
+  toast.textContent = text;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 1500);
+}
+
+// === START ===
+init();
+</script>
 </body>
 </html>
